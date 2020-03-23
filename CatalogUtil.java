@@ -1,4 +1,3 @@
-
 import java.awt.*;
 import java.io.*;
 import java.net.URI;
@@ -14,13 +13,14 @@ public class CatalogUtil {
     }
 
     public static Catalog load(String path)
-            throws IOException, ClassNotFoundException, InvalidCatalogException {
+            throws IOException, ClassNotFoundException {
         FileInputStream file = new FileInputStream(path);
-        ObjectInputStream catalognou = new ObjectInputStream(file);
-        return (Catalog) catalognou.readObject();
+        ObjectInputStream catalog = new ObjectInputStream(file);
+        return (Catalog) catalog.readObject();
     }
 
-    public static void view(Document document) throws IOException, URISyntaxException {
+    public static void view(Document document)
+            throws IOException ,URISyntaxException {
         Desktop desktop = Desktop.getDesktop();
         //… browse or open, depending of the location type
         if (document.getLocation().startsWith("http")) {
@@ -28,6 +28,6 @@ public class CatalogUtil {
         } else {
             desktop.open(new File(document.getLocation()));
         }
-        //… browse or open, depending of the location type
     }
+
 }
