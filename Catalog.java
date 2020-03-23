@@ -43,5 +43,11 @@ public class Catalog  implements Serializable {
         return documents.stream()
                 .filter(d -> d.getId().equals(id)).findFirst().orElse(null);
     }
+    public List<Document> getDocuments() {
+        return documents;
+    }
 
+    public void setDocuments(List<Document> documents) {
+        this.documents = documents;
+    }
 }
