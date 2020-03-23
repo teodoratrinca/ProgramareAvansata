@@ -2,14 +2,21 @@ import java.io.IOException;
 import java.net.URISyntaxException;
 
 public class Main {
-    public static void main(String[] args) throws IOException, URISyntaxException, InvalidCatalogException, ClassNotFoundException {
+    public static void main(String[] args) throws IOException {
         Main app = new Main();
-        app.testCreateSave();
-        app.testLoadView();
-
+        try {
+            app.testCreateSave();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        try {
+            app.testLoadView();
+        } catch (ClassNotFoundException | URISyntaxException | IOException e) {
+            e.printStackTrace();
+        }
     }
 
-    private void testCreateSave() throws IOException {
+    private void testCreateSave()throws IOException{
         Catalog catalog =
                 new Catalog("Java Resources", "d:/java/catalog.ser");
         Document doc = new Document("java1", "Java Course 1",
@@ -25,9 +32,11 @@ public class Main {
         }
     }
 
-    private void testLoadView() throws IOException, URISyntaxException, InvalidCatalogException, ClassNotFoundException {
-        Catalog catalog = CatalogUtil.load("d:/java/catalog.ser");
-        Document doc = catalog.findById("java1");
-        CatalogUtil.view(doc);
+    private void testLoadView() throws IOException, ClassNotFoundException, URISyntaxException {
+        Catalog catalog = CatalogUtil.load( "d:/java/catalog.ser");
+        assert catalog != null;
+        Document document1 = catalog.findById("java1");
+        CatalogUtil.view(document1);
+
     }
 }
