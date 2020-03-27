@@ -43,13 +43,13 @@ public class ControlPanel  extends JPanel {
     // ...TODO
     private void load(ActionEvent e) {
         try {
-            JFileChooser fileChooser = new JFileChooser(FileSystemView.getFileSystemView().getHomeDirectory());
-            File selectedFile = null;
-            add(fileChooser);
-            int returnValue = fileChooser.showOpenDialog(null);
+            JFileChooser chooser = new JFileChooser(FileSystemView.getFileSystemView().getHomeDirectory());
+            File selFile = null;
+            add(chooser);
+            int returnValue = chooser.showOpenDialog(null);
             if (returnValue == JFileChooser.APPROVE_OPTION) {
-                selectedFile = fileChooser.getSelectedFile();
-                BufferedImage image = ImageIO.read(new File(selectedFile.getAbsolutePath()));
+                selFile = chooser.getSelectedFile();
+                BufferedImage image = ImageIO.read(new File(selFile.getAbsolutePath()));
                 frame.canvas.graphics.drawImage(image, 0, 0, null);
                 frame.canvas.repaint();
             }
