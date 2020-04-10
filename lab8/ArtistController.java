@@ -7,7 +7,7 @@ public class ArtistController {
     public void create(String name, String country) {
         try {
             Statement x = Database.StartBdd().createStatement();
-            String y = "insert into artist values(0,'" + name + "','" + country + "');";
+            String y = "insert into artist values(default,\"" + name + "\" , " + country +  " )";
             x.executeUpdate(y);
         } catch (Exception e) {
             System.out.println(e);
