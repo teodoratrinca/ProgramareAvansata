@@ -1,0 +1,16 @@
+<?xml version='1.0' encoding='utf-8'?>
+<!DOCTYPE hibernate-configuration PUBLIC
+    "-//Hibernate/Hibernate Configuration DTD//EN"
+    "http://www.hibernate.org/dtd/hibernate-configuration-3.0.dtd">
+<hibernate-configuration>
+  <session-factory>
+    <property name="connection.url"/>
+    <property name="connection.driver_class"/>
+     <property name="connection.username"/>
+    <!-- DB schema will be updated if needed -->
+    <property name="hibernate.connection.url" value="jdbc:mysql://localhost/musicalbum"/>
+    <property name="hibernate.connection.driver_class" value="com.mysql.jdbc.Driver"/>
+    <property name="hibernate.connection.username" value="root"/>
+    <property name="hibernate.connection.password" value="2991104teodora"/>
+  </session-factory>
+</hibernate-configuration>
